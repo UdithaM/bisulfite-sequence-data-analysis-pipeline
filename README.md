@@ -15,7 +15,7 @@ export PATH=$PATH:/<PATH_TO_PACKAGE_OR_LIBRARY_FROM_ROOT_FOLDER>
 
 Commonly these can be downloaded using Gene Expression Omnibus (GEO) or SRA in NCBI. Refer to [download_sra.pbs](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/download_sra.pbs) which is a sample bash script that can be used for this purpose. This will result in a pair of FASTQ files for each SRA file.
 
-#### 3) Quality control using trim_galore software
+#### 3) Quality control using trim_galore software (For this installing [trim-galore](https://anaconda.org/bioconda/trim-galore) is required).
 
 After obtaining adapter sequences for both the forward and reverse reads, `trim_galore` which is a wrapper script can be used to automate quality and adapter trimming as well as quality control. 
 
