@@ -1,7 +1,7 @@
 #!/bin/sh
 
-#PBS -N download_sra
-#PBS -l nodes=1:ppn=2
+#PBS -N trim-galore
+#PBS -l nodes=1:ppn=16
 #PBS -l walltime=24:00:00
 #PBS -q longjob
 
@@ -16,15 +16,14 @@ echo "$0"
 
 for i in 1 2 3 4 5 6 7 8 9
 do
-    wget -O SRR77140${i}.sra https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR77140"${i}"/SRR77140"${i}"
-    fastq-dump --split-files SRR77140${i}.sra
+    trim_galore --paired --trim1 --basename SRR7714${i} --output_dir Trimmed  SRR77140$i_1.fastq SRR77140$i_2.fastq
 done
 
 for i in 10 11 12
 do
-    wget -O SRR7714${i}.sra https://sra-pub-run-odp.s3.amazonaws.com/sra/SRR7714"${i}"/SRR7714"${i}"
-    fastq-dump --split-files SRR7714${i}.sra
+    trim_galore --paired --trim1 --basename SRR7714${i} --output_dir Trimmed  SRR7714${i}_1.fastq SRR7714${i}_2.fastq
 done
+
 
 endtime=$(date +"%s")
 echo $(date -u -d @${endtime})
