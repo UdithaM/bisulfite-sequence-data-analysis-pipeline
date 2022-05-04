@@ -1,18 +1,5 @@
 #!/bin/sh
-
-#PBS -N download_sra
-#PBS -l nodes=1:ppn=2
-#PBS -l walltime=24:00:00
-#PBS -q longjob
-
-
-starttime=$(date +"%s")
-echo $(date -u -d @${starttime})
-echo "options: time=24:00:00 n=1 ppn=1 q=longjob"
-echo "$0"
-
-# Set your working directory below.
-#cd ../../project/waterland/<YOUR_ROOT_FOLDER>
+#SBATCH --time=12:00:00 -n24 -p bynode
 
 for i in 1 2 3 4 5 6 7 8 9
 do
@@ -26,7 +13,4 @@ do
     fastq-dump --split-files SRR7714${i}.sra
 done
 
-endtime=$(date +"%s")
-echo $(date -u -d @${endtime})
-echo "Time elapsed" $(date -u -d @$(($endtime-$starttime)) +"%T")
 

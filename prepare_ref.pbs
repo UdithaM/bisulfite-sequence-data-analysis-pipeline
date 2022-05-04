@@ -1,20 +1,7 @@
 #!/bin/sh
+#SBATCH --time=12:00:00 -n24 -p bynode
 
-#PBS -N trim-galore
-#PBS -l nodes=8:ppn=1
-#PBS -l walltime=24:00:00
-#PBS -q longjob
+# Run the commands in the folder where the reference genome is located.
+#cd <PATH_TO_REFERENCE_GENOME>
 
-# Run the commands in the folder where the reference genome is stored.
-#cd ../../project/waterland/<YOUR_ROOT_FOLDER>/<PATH_TO_REFERENCE_GENOME>
-
-starttime=$(date +"%s")
-echo $(date -u -d @${starttime})
-echo "options: time=24:00:00 n=1 ppn=1 q=longjob"
-echo "$0"
-
-/home/<YOUR_ROOT_FOLDER>/<PATH_TO_bismark_genome_preparation> ./
-
-endtime=$(date +"%s")
-echo $(date -u -d @${endtime})
-echo "Time elapsed" $(date -u -d @$(($endtime-$starttime)) +"%T")
+bismark_genome_preparation ./

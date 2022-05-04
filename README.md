@@ -13,7 +13,7 @@ export PATH=$PATH:/<PATH_TO_PACKAGE_OR_LIBRARY_FROM_ROOT_FOLDER>
 
 ### 2) Download the required Sequence Read Archive (SRA) files & convert to FASTQ files (For this installing [sra-tools](https://anaconda.org/bioconda/sra-tools) is required).
 
-Commonly these can be downloaded using Gene Expression Omnibus (GEO) or SRA in NCBI. Refer to [download_sra.pbs](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/download_sra.pbs) which is a sample bash script that can be used for this purpose. This will result in a pair of FASTQ files for each SRA file.
+Commonly these can be downloaded using Gene Expression Omnibus (GEO) or SRA in NCBI. Refer to [download_sra.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/download_sra.slrum) which is a sample bash script that can be used for this purpose. This will result in a pair of FASTQ files for each SRA file.
 
 ### 3) Quality control using trim_galore software (For this installing [trim-galore](https://anaconda.org/bioconda/trim-galore) is required).
 
@@ -24,15 +24,17 @@ This software automatically,
 - removes any signs of the Illumina adapter sequence from the 3' end (AGATCGGAAGAGC)
 - remove sequences that got shorter than 20 bp
 
-Refer to [trim_galore.pbs](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/trim_galore.pbs) which is a sample bash script that can be used for this purpose.
+Refer to [trim_galore.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/trim_galore.slrum) which is a sample bash script that can be used for this purpose.
 
 ### 4) Using Bismark to map to the reference genome (For this installing [bismark](https://anaconda.org/bioconda/bismark) & [bowtie2](https://anaconda.org/bioconda/bowtie2) are required).
 
 #### 4.1) Prepare the new reference genome using bismark.
 
-Refer to [prepare_ref.pbs](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/prepare_ref.pbs) which is a sample bash script that can be used for this purpose.
+Refer to [prepare_ref.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/prepare_ref.slrum) which is a sample bash script that can be used for this purpose.
 
 #### 4.2 Mapping reads to reference genome using Bismark
+
+Depending on the size of the FASTQ files, they can be split using [seqkit](https://anaconda.org/bioconda/seqkit). Then they can be used for mapping separately resulting in multiple .BAM files.
 
 Description of the parameters used:
 
@@ -42,14 +44,21 @@ Description of the parameters used:
 
 -p : This is an option to use parallelization in bowtie2
 
-[genome folder] in this example, the path to the genome folder used by Jack is given.
-
 -B : The base name of the .BAM file generated from the Bismark.
 
 --multicore : this option works when -B is not specified. Use this to set the program to run in parallel.
 -1: read 1 fastq file
 -2: read 2 fastq file
 
+The complete guide for the options for Bismark can be accessed [here](https://www.bioinformatics.babraham.ac.uk/projects/bismark/Bismark_User_Guide.pdf).
+
+** Note that, if you are planning to use bisSNP later, add the --rg_tag to bismark. The the read groups will be tagged with some information about the sequencing for later use.
+
+Refer to [mapping.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/mapping.slrum) which is a sample bash script that can be used for this purpose.
+
+Once the mapping using Bismark is completed, [MultiQC](https://multiqc.info/) can be used to generate a report on the data analysed.
+
+NOTE: Refer [here](https://multiqc.info/docs/) for the complete documentation of MultiQC.
 
 #### NOTE: if you are planning to use bisSNP later, add the --rg_tag to bismark. The read groups will be tagged with some information about the sequecing for later use.
 
