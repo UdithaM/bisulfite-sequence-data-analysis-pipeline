@@ -32,7 +32,7 @@ Refer to [trim_galore.slrum](https://github.com/UdithaM/bisulfite-sequence-data-
 
 Refer to [prepare_ref.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/prepare_ref.slrum) which is a sample bash script that can be used for this purpose.
 
-#### 4.2 Mapping reads to reference genome using Bismark
+#### 4.2) Mapping reads to reference genome using Bismark
 
 Depending on the size of the FASTQ files, they can be split using [seqkit](https://anaconda.org/bioconda/seqkit). Then they can be used for mapping separately resulting in multiple .BAM files.
 
@@ -52,7 +52,7 @@ Description of the parameters used:
 
 The complete guide for the options for Bismark can be accessed [here](https://www.bioinformatics.babraham.ac.uk/projects/bismark/Bismark_User_Guide.pdf).
 
-** Note that, if you are planning to use bisSNP later, add the --rg_tag to bismark. The the read groups will be tagged with some information about the sequencing for later use.**
+**Note that, if you are planning to use bisSNP later, add the --rg_tag to bismark. The the read groups will be tagged with some information about the sequencing for later use.**
 
 Refer to [mapping.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/mapping.slrum) which is a sample bash script that can be used for this purpose.
 
@@ -61,6 +61,26 @@ Once the mapping using Bismark is completed, [MultiQC](https://multiqc.info/) ca
 **NOTE: Refer [here](https://multiqc.info/docs/) for the complete documentation of MultiQC.**
 
 #### NOTE: if you are planning to use bisSNP later, add the --rg_tag to bismark. The read groups will be tagged with some information about the sequecing for later use.
+
+#### 4.3) Splitting tha bam file to extract bam files for each chromosome [bamtools](https://anaconda.org/bioconda/bamtools) 
+
+Refer to [splitting.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/splitting.slrum) which is a sample bash script that can be used for this purpose.
+
+**NOTE: Refer [here](https://hcc.unl.edu/docs/applications/app_specific/bioinformatics_tools/data_manipulation_tools/bamtools/running_bamtools_commands/) for the complete documentation of bamtools commands.**
+
+
+### 5) 5. Methylation extraction using bismark_methylation_extractor
+
+**Before doing the extraction, BAM files for the selected chromosome from each sample (if they were processed after splitting) must be merged together.**
+
+Potentially important consideration --no_overlap
+
+For paired-end reads it is theoretically possible that Read 1 and Read 2 overlap. This option avoids scoring overlapping methylation calls twice (only methylation calls of read 1 are used for in the process since read 1 has historically higher quality basecalls than read 2).
+
+This is set automatically by the methylation extractor.
+
+Refer to [extraction.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/extraction.slrum) which is a sample bash script that can be used for this purpose.
+
 
 ## License
 

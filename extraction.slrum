@@ -1,0 +1,4 @@
+#!/bin/sh
+#SBATCH --time=24:00:00 -n24 -p bynode
+
+bismark_methylation_extractor -p --comprehensive --report --multicore 4 --samtools_path /<PATH_TO_SAM_TOOLS> --bedGraph --buffer_size 8G --ample_memory --cytosine_report --genome_folder  '<PATH_TO_REFERENCE_GENOME>' C01_HF_lane1_pe.REF_chr19.bam
