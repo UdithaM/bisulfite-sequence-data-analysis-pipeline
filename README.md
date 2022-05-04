@@ -52,13 +52,13 @@ Description of the parameters used:
 
 The complete guide for the options for Bismark can be accessed [here](https://www.bioinformatics.babraham.ac.uk/projects/bismark/Bismark_User_Guide.pdf).
 
-** Note that, if you are planning to use bisSNP later, add the --rg_tag to bismark. The the read groups will be tagged with some information about the sequencing for later use.
+** Note that, if you are planning to use bisSNP later, add the --rg_tag to bismark. The the read groups will be tagged with some information about the sequencing for later use.**
 
 Refer to [mapping.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/mapping.slrum) which is a sample bash script that can be used for this purpose.
 
 Once the mapping using Bismark is completed, [MultiQC](https://multiqc.info/) can be used to generate a report on the data analysed.
 
-NOTE: Refer [here](https://multiqc.info/docs/) for the complete documentation of MultiQC.
+**NOTE: Refer [here](https://multiqc.info/docs/) for the complete documentation of MultiQC.**
 
 #### NOTE: if you are planning to use bisSNP later, add the --rg_tag to bismark. The read groups will be tagged with some information about the sequecing for later use.
 
