@@ -70,7 +70,7 @@ Refer to [splitting.slrum](https://github.com/UdithaM/bisulfite-sequence-data-an
 
 ### 5) Deduplication
 
-**Usually sorting needs to be done before running the deduplication. 
+**Usually sorting needs to be done before running the deduplication.**
 
 Information on installation of [bamtools](https://anaconda.org/bioconda/bamtools) & [picard](https://anaconda.org/bioconda/picard).
 
