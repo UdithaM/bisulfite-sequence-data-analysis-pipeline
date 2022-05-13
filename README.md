@@ -68,8 +68,25 @@ Refer to [splitting.slrum](https://github.com/UdithaM/bisulfite-sequence-data-an
 
 **NOTE: Refer [here](https://hcc.unl.edu/docs/applications/app_specific/bioinformatics_tools/data_manipulation_tools/bamtools/running_bamtools_commands/) for the complete documentation of bamtools commands.**
 
+### 5) Deduplication
 
-### 5) 5. Methylation extraction using bismark_methylation_extractor
+**Usually sorting needs to be done before running the deduplication. 
+
+Information on installation of [bamtools](https://anaconda.org/bioconda/bamtools) & [picard](https://anaconda.org/bioconda/picard).
+
+This [document](https://raw.githubusercontent.com/wiki/pezmaster31/bamtools/Tutorial_Toolkit_BamTools-1.0.pdf) can be used as a guide for bamtools options.
+
+Refer to [deduplication.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/deduplication.slrum) which is a sample bash script that can be used for this purpose.
+
+### 6) Merging the mutiple files from the same sample (Optional)
+
+If the data from one sample comes as multiple files, in this step those will be merged.
+
+This [document](https://raw.githubusercontent.com/wiki/pezmaster31/bamtools/Tutorial_Toolkit_BamTools-1.0.pdf) can be used as a guide for bamtools options.
+
+Refer to [merge.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/merge.slrum) which is a sample bash script that can be used for this purpose.
+
+### 7) Methylation extraction using bismark_methylation_extractor
 
 **Before doing the extraction, BAM files for the selected chromosome from each sample (if they were processed after splitting) must be merged together.**
 
