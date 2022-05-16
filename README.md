@@ -99,9 +99,9 @@ This is set automatically by the methylation extractor.
 Refer to [extraction.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/extraction.slrum) which is a sample bash script that can be used for this purpose.
 
 
-### 7) Remove double counting CpGs in forward and backward strands
+### 8) Remove double counting CpGs in forward and backward strands
 
-This step will remove the double counting of the CpGs from forward & backward strands. This can be run on the unzipped .cov files resulting from the methylation extraction step.
+This step will remove the double counting of the CpGs from forward & backward strands. This can be run on the **unzipped .cov** files resulting from the methylation extraction step.
 
 Refer to [remove_double_count.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/remove_double_count.slrum) which is a sample bash script that can be used for this purpose.
 
