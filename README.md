@@ -86,8 +86,13 @@ Refer to [insert_size.slrum](https://github.com/UdithaM/bisulfite-sequence-data-
 
 **NOTE: Refer [here](https://gatk.broadinstitute.org/hc/en-us/articles/360037055772-CollectInsertSizeMetrics-Picard-) for the complete documentation of CollectInsertSizeMetrics.**
 
-
 ### 6) Extracting **conversion rate** for each sample
+
+- To estimate bisulfite conversion rate, you need to have DNA that you know is unmethylated added to your sample before bisulfite conversion (for example, our lab adds 1ng lambda phage DNA to ~200ng of our mammalian samples). In that sample, your bisulfite conversion rate is the proportion of Cs converted to Ts (since all Cs are unmethylated and should be converted). 
+- This can be estimated from the experimental sample CHG and CHH sites, in which the actual methylation % is close to 0.
+- **Conversion Rate** is calculated as (converted/(converted + unconverted))
+
+Refer to [conversion_rate.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/conversion_rate.slrum) which is a sample bash script that can be used for this purpose.
 
 ### 7) Deduplication
 
