@@ -68,9 +68,30 @@ Refer to [splitting.slrum](https://github.com/UdithaM/bisulfite-sequence-data-an
 
 **NOTE: Refer [here](https://hcc.unl.edu/docs/applications/app_specific/bioinformatics_tools/data_manipulation_tools/bamtools/running_bamtools_commands/) for the complete documentation of bamtools commands.**
 
-### 5) Deduplication
+### 5) Getting information on **insert size**
 
-**Usually sorting needs to be done before running the deduplication.**
+![Insert Size](http://www.frontiersin.org/files/Articles/77572/fgene-05-00005-HTML/image_m/fgene-05-00005-g001.jpg)
+
+Following script provides useful metrics for validating library construction including the insert size distribution and read orientation of paired-end libraries.
+
+The expected proportions of these metrics vary depending on the type of library preparation used, resulting from technical differences between pair-end libraries and mate-pair libraries.
+
+The CollectInsertSizeMetrics tool outputs the percentages of read pairs in each of the three orientations (FR, RF, and TANDEM) as a histogram. In addition, the insert size distribution is output as both a histogram (.insert_size_Histogram.pdf) and as a data table (.insert_size_metrics.txt).
+
+**NOTE: Usually input file should be sorted before running the CollectInsertSizeMetrics.**
+
+**NOTE: Metrics labeled as percentages are actually expressed as fractions.**
+
+Refer to [insert_size.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/insert_size.slrum) which is a sample bash script that can be used for this purpose.
+
+**NOTE: Refer [here](https://gatk.broadinstitute.org/hc/en-us/articles/360037055772-CollectInsertSizeMetrics-Picard-) for the complete documentation of CollectInsertSizeMetrics.**
+
+
+### 6) Extracting **conversion rate** for each sample
+
+### 7) Deduplication
+
+**Usually input file should be sorted before running the deduplication.**
 
 Information on installation of [bamtools](https://anaconda.org/bioconda/bamtools) & [picard](https://anaconda.org/bioconda/picard).
 
@@ -78,7 +99,7 @@ This [document](https://raw.githubusercontent.com/wiki/pezmaster31/bamtools/Tuto
 
 Refer to [deduplication.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/deduplication.slrum) which is a sample bash script that can be used for this purpose.
 
-### 6) Merging the mutiple files from the same sample (Optional)
+### 8) Merging the mutiple files from the same sample (Optional)
 
 If the data from one sample comes as multiple files, in this step those will be merged.
 
@@ -86,7 +107,7 @@ This [document](https://raw.githubusercontent.com/wiki/pezmaster31/bamtools/Tuto
 
 Refer to [merge.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/merge.slrum) which is a sample bash script that can be used for this purpose.
 
-### 7) Methylation extraction using bismark_methylation_extractor
+### 9) Methylation extraction using bismark_methylation_extractor
 
 **Before doing the extraction, BAM files for the selected chromosome from each sample (if they were processed after splitting) must be merged together.**
 
@@ -99,7 +120,7 @@ This is set automatically by the methylation extractor.
 Refer to [extraction.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/extraction.slrum) which is a sample bash script that can be used for this purpose.
 
 
-### 8) Remove double counting CpGs in forward and backward strands
+### 10) Remove double counting CpGs in forward and backward strands
 
 This step will remove the double counting of the CpGs from forward & backward strands. This can be run on the **unzipped .cov** files resulting from the methylation extraction step.
 
