@@ -131,6 +131,11 @@ This step will remove the double counting of the CpGs from forward & backward st
 
 Refer to [remove_double_count.slrum](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/remove_double_count.slrum) which is a sample bash script that can be used for this purpose.
 
+
+
+### Refer to [VTRNA2-1 Figures Replication](https://github.com/UdithaM/bisulfite-sequence-data-analysis-pipeline/blob/main/Replicate_Plots%20(Modified%20Avg).ipynb) to check on the analysis of chr19 coverage data for HF & PBL in C01 & C02.
+
+
 ## License
 
 MIT
